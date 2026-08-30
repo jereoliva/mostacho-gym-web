@@ -1,0 +1,27 @@
+/* =========================================
+   SISTEMA DE DISEÑO: MOSTACHO INDUSTRIAL-RETRO
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    /* Paleta Corporativa Estricta */
+    --bg-main: #121212;             /* Negro mate profundo */
+    --bg-surface: #1C1C1C;          /* Negro superficie para dar relieve */
+    --text-main: #F4F4F9;           /* Blanco hueso/crema */
+    --text-muted: #A0A0A0;          /* Gris para textos secundarios */
+    
+    /* Acentos de Marca (Actualizado al Logo) */
+    --accent-logo: #D81B60;         /* Rojo/Fucsia vibrante extraído del logo */
+    --accent-mustard: #E1AD01;      /* Amarillo Mostaza para estados activos/estrellas */
+    --accent-red: #8B0000;          /* Rojo oscuro clásico para botones pesados */
+    
+    /* Tipografías */
+    --font-title: 'Bebas Neue', 'Impact', sans-serif; 
+    --font-text: 'Lora', serif;
+    
+    /* Variables de UI Industrial */
+    --border-logo: 2px solid var(--accent-logo);
+    --border-subtle: 1px solid #333333;
+    --shadow-dark: 0 15px 35px rgba(0, 0, 0, 0.9);
+    --shadow-red: 0 8px 20px rgba(216, 27, 96, 0.3);
+}

@@ -1,0 +1,200 @@
+/* =========================================
+   ESTILOS ESPECÍFICOS DEL PANEL DE ADMINISTRACIÓN
+   ========================================= */
+
+/* Layout Principal con CSS Grid */
+.admin-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+    background-color: var(--bg-main);
+    overflow-x: hidden;
+}
+
+/* =========================================
+   SIDEBAR (Menú Lateral)
+   ========================================= */
+.admin-sidebar {
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.sidebar-header {
+    text-align: center;
+    padding-bottom: 30px;
+    border-bottom: 1px dashed var(--border-subtle);
+    margin-bottom: 30px;
+}
+
+.admin-logo {
+    width: 80px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 5px rgba(216, 27, 96, 0.4));
+}
+
+.sidebar-header h2 {
+    font-size: 2rem;
+    color: var(--accent-logo);
+    margin: 0;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-grow: 1;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 12px 20px;
+    color: var(--text-muted);
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    border-radius: 4px;
+    border-left: 3px solid transparent;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.sidebar-nav a:hover, .sidebar-nav a.active {
+    background-color: rgba(216, 27, 96, 0.1);
+    color: var(--text-main);
+    border-left: 3px solid var(--accent-logo);
+}
+
+.sidebar-footer {
+    padding-top: 20px;
+    border-top: 1px dashed var(--border-subtle);
+}
+
+/* =========================================
+   ÁREA PRINCIPAL
+   ========================================= */
+.admin-main {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-topbar {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-content {
+    padding: 40px;
+    overflow-y: auto;
+}
+
+/* =========================================
+   KPI CARDS (Indicadores)
+   ========================================= */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.kpi-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    padding: 25px;
+    border-top: 3px solid var(--accent-logo);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.kpi-title {
+    color: var(--text-muted);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.kpi-value {
+    font-family: var(--font-title);
+    font-size: 3.5rem;
+    color: var(--text-main);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.kpi-trend {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.kpi-trend.positiva { color: #25D366; }
+.kpi-trend.negativa { color: var(--accent-logo); }
+
+/* =========================================
+   TABLAS DE DATOS
+   ========================================= */
+.admin-table-container {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    padding: 30px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.admin-table th {
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    padding: 15px;
+    border-bottom: 2px solid var(--border-subtle);
+}
+
+.admin-table td {
+    padding: 15px;
+    border-bottom: 1px solid #222;
+    color: var(--text-main);
+}
+
+.admin-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+/* Badges de Estado */
+.badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-family: var(--font-title);
+    letter-spacing: 1px;
+}
+
+.badge-ok { background-color: rgba(37, 211, 102, 0.2); color: #25D366; border: 1px solid #25D366; }
+.badge-warning { background-color: rgba(225, 173, 1, 0.2); color: var(--accent-mustard); border: 1px solid var(--accent-mustard); }
+.badge-error { background-color: rgba(216, 27, 96, 0.2); color: var(--accent-logo); border: 1px solid var(--accent-logo); }
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 900px) {
+    .admin-layout {
+        grid-template-columns: 1fr;
+    }
+    .admin-sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+    }
+    .admin-content {
+        padding: 20px;
+    }
+    .admin-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}

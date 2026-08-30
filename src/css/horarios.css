@@ -1,0 +1,153 @@
+/* =========================================
+   ESTILOS ESPECÍFICOS DE LA GRILLA DE HORARIOS
+   ========================================= */
+
+/* Toggle de Sedes */
+.toggle-sedes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.btn-sede {
+    background-color: var(--bg-surface);
+    color: var(--text-muted);
+    border: 1px solid var(--border-subtle);
+    padding: 10px 30px;
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.btn-sede:hover {
+    border-color: var(--accent-mustard);
+}
+
+.btn-sede.activo {
+    background-color: rgba(216, 27, 96, 0.1);
+    color: var(--text-main);
+    border-color: var(--accent-logo);
+}
+
+/* Tabla */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto; 
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-dark);
+}
+
+.tabla-horarios {
+    width: 100%;
+    min-width: 800px; 
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.tabla-horarios th {
+    background-color: #141414;
+    color: var(--text-main);
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    padding: 20px 10px;
+    border-bottom: 2px solid var(--accent-logo);
+    border-right: 1px solid var(--border-subtle);
+}
+
+.tabla-horarios .col-hora {
+    background-color: #0a0a0a;
+    color: var(--accent-mustard);
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    font-weight: normal;
+    border-right: 1px solid #333;
+    width: 150px;
+}
+
+.tabla-horarios td {
+    padding: 15px 10px;
+    border-bottom: 1px solid var(--border-subtle);
+    border-right: 1px solid var(--border-subtle);
+    vertical-align: middle;
+}
+
+.tabla-horarios th:last-child,
+.tabla-horarios td:last-child {
+    border-right: none;
+}
+
+/* Tarjetas de actividad interactivas */
+.actividad {
+    background-color: var(--bg-main);
+    padding: 12px 5px;
+    border-radius: 4px;
+    font-family: var(--font-text);
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--text-main);
+    border-left: 4px solid transparent; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    cursor: pointer; /* Modificado para interacción */
+}
+
+.actividad:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(216, 27, 96, 0.3);
+    border-color: var(--accent-logo);
+}
+
+.actividad.musculacion { border-left-color: var(--accent-logo); border-bottom: 1px solid rgba(216, 27, 96, 0.2); }
+.actividad.funcional { border-left-color: var(--accent-mustard); border-bottom: 1px solid rgba(225, 173, 1, 0.2); }
+.actividad.cross { border-left-color: #8B0000; border-bottom: 1px solid rgba(139, 0, 0, 0.2); }
+.actividad.libre { border-left-color: #4A6478; border-bottom: 1px solid rgba(74, 100, 120, 0.2); }
+
+/* Leyenda */
+.leyenda-horarios {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.leyenda-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-muted);
+    font-family: var(--font-text);
+    font-size: 1rem;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.color-box.musculacion { background-color: var(--accent-logo); }
+.color-box.funcional { background-color: var(--accent-mustard); }
+.color-box.cross { background-color: #8B0000; }
+.color-box.libre { background-color: #4A6478; }
+
+@media (max-width: 768px) {
+    .contenedor { padding: 0 10px; }
+    .titulo-seccion { font-size: 2.5rem; }
+    .leyenda-horarios { gap: 15px; }
+    .toggle-sedes { flex-direction: column; padding: 0 20px; }
+    .table-responsive::after {
+        content: 'Desliza para ver más →';
+        display: block;
+        text-align: right;
+        padding: 10px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-style: italic;
+    }
+}

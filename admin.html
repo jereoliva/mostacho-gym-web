@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control | Mostacho Gym</title>
+    
+    <!-- =========================================
+         EL MURO DE SEGURIDAD (Se ejecuta primero)
+         ========================================= -->
+    <script>
+        // Si no existe la llave en la memoria, expulsa al intruso inmediatamente
+        if (sessionStorage.getItem('mostacho_token_acceso') !== 'autorizado') {
+            window.location.href = 'login.html';
+        }
+    </script>
+    
+    <!-- Tipografías -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Hojas de Estilo -->
+    <link rel="stylesheet" href="./src/css/variables.css">
+    <link rel="stylesheet" href="./src/css/global.css">
+    <link rel="stylesheet" href="./src/css/admin.css">
+</head>
+<body class="admin-layout">
+
+    <!-- MENÚ LATERAL (SIDEBAR) -->
+    <aside class="admin-sidebar">
+        <div class="sidebar-header">
+            <img src="./public/imagen/logo.png" alt="Mostacho Logo" class="admin-logo">
+            <h2>LA FORJA ADMIN</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="admin.html" class="active">📊 Dashboard</a>
+            <a href="#">👥 Gestión de Socios</a>
+            <a href="#">🎟️ Membresías</a>
+            <a href="#">⚙️ Configuración</a>
+        </nav>
+        <div class="sidebar-footer">
+            <!-- Botón de Logout conectado a JavaScript -->
+            <button onclick="cerrarSesion()" class="btn-outline-full" style="font-size: 1rem; padding: 10px; width: 100%;">Cerrar Sesión</button>
+        </div>
+    </aside>
+
+    <!-- ÁREA DE CONTENIDO PRINCIPAL -->
+    <main class="admin-main">
+        
+        <header class="admin-topbar">
+            <div>
+                <h1 style="margin:0; font-size: 2.5rem; color: var(--text-main);">Panel General</h1>
+                <p style="color: var(--text-muted); margin:0;">Bienvenido, Comandante.</p>
+            </div>
+            <div class="admin-profile">
+                <span style="color: var(--accent-mustard); font-family: var(--font-title); font-size: 1.2rem;">ADMINISTRADOR</span>
+            </div>
+        </header>
+
+        <section class="admin-content">
+            <!-- TARJETAS DE INDICADORES (KPIs) -->
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h3 class="kpi-title">Socios Activos</h3>
+                    <div class="kpi-value">342</div>
+                    <div class="kpi-trend positiva">+12 este mes</div>
+                </div>
+                <div class="kpi-card">
+                    <h3 class="kpi-title">Membresías por Vencer</h3>
+                    <div class="kpi-value" style="color: var(--accent-logo);">18</div>
+                    <div class="kpi-trend negativa">Próximos 7 días</div>
+                </div>
+                <div class="kpi-card">
+                    <h3 class="kpi-title">Ingresos Mensuales</h3>
+                    <div class="kpi-value">$8.5M</div>
+                    <div class="kpi-trend">Estable</div>
+                </div>
+            </div>
+
+            <!-- TABLA DE ACTIVIDAD RECIENTE -->
+            <div class="admin-table-container">
+                <h2 style="margin-bottom: 20px; font-size: 2rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px; color: var(--text-main);">Últimos Check-ins</h2>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Socio</th>
+                            <th>Sede</th>
+                            <th>Plan</th>
+                            <th>Hora de Ingreso</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Marcos R.</td>
+                            <td>Yrigoyen</td>
+                            <td>Integral</td>
+                            <td>Hoy, 18:30</td>
+                            <td><span class="badge badge-ok">Activo</span></td>
+                        </tr>
+                        <tr>
+                            <td>Julieta M.</td>
+                            <td>Panamá</td>
+                            <td>Musculación</td>
+                            <td>Hoy, 18:15</td>
+                            <td><span class="badge badge-ok">Activo</span></td>
+                        </tr>
+                        <tr>
+                            <td>Facundo S.</td>
+                            <td>Yrigoyen</td>
+                            <td>Integral</td>
+                            <td>Hoy, 17:50</td>
+                            <td><span class="badge badge-warning">Vence mañana</span></td>
+                        </tr>
+                        <tr>
+                            <td>Diego L.</td>
+                            <td>Panamá</td>
+                            <td>Musculación</td>
+                            <td>Hoy, 17:10</td>
+                            <td><span class="badge badge-error">Vencido</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Vinculamos el mismo script para poder usar la función cerrarSesion() -->
+    <script src="./src/js/core/auth.js"></script>
+</body>
+</html>

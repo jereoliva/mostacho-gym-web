@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horarios de Actividades | Mostacho Gym</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./src/css/variables.css">
+    <link rel="stylesheet" href="./src/css/global.css">
+    <link rel="stylesheet" href="./src/css/horarios.css"> 
+</head>
+<body style="padding-top: 100px;"> 
+
+    <!-- PANTALLA DE CARGA -->
+    <div id="splash-screen" class="splash-screen">
+        <img src="./public/imagen/logo.png" alt="Cargando Mostacho..." class="splash-logo">
+    </div>
+
+    <!-- HEADER Y NAVEGACIÓN -->
+    <header class="main-header">
+        <div class="nav-container">
+            <a href="index.html">
+                <img src="./public/imagen/logo.png" alt="Mostacho Gym Logo" class="brand-logo">
+            </a>
+            <nav class="main-nav">
+                <a href="index.html#filosofia">Filosofía</a>
+                <a href="index.html#sedes">Sedes</a>
+                <a href="horarios.html" style="color: var(--accent-logo); border-bottom: 2px solid var(--accent-logo);">Horarios</a>
+                <a href="index.html#planes">Sumate</a>
+                <a href="login.html" class="btn-outline">Ingresar</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contenedor" style="margin-bottom: 100px;">
+        
+        <div style="text-align: center; margin-bottom: 30px;">
+            <h1 class="titulo-seccion" style="margin-bottom: 15px;">GRILLA DE ACTIVIDADES</h1>
+            <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 30px;">Selecciona tu cuartel para ver los horarios.</p>
+        </div>
+
+        <!-- INTERRUPTOR DE SEDES -->
+        <div class="toggle-sedes">
+            <button id="btn-yrigoyen" class="btn-sede activo">SEDE YRIGOYEN</button>
+            <button id="btn-panama" class="btn-sede">SEDE PANAMÁ</button>
+        </div>
+
+        <div class="table-responsive">
+            <table class="tabla-horarios">
+                <thead>
+                    <tr>
+                        <th class="col-hora">HORA</th>
+                        <th>LUNES</th>
+                        <th>MARTES</th>
+                        <th>MIÉRCOLES</th>
+                        <th>JUEVES</th>
+                        <th>VIERNES</th>
+                        <th>SÁBADO</th>
+                    </tr>
+                </thead>
+                
+                <!-- BODY: SEDE YRIGOYEN -->
+                <tbody id="tbody-yrigoyen">
+                    <tr>
+                        <td class="col-hora">08:00 - 09:00</td>
+                        <td><div class="actividad musculacion" data-profe="Lucas" data-intensidad="Media/Alta">Musculación</div></td>
+                        <td><div class="actividad funcional" data-profe="Martina" data-intensidad="Alta (Cardio)">Funcional</div></td>
+                        <td><div class="actividad musculacion" data-profe="Lucas" data-intensidad="Media/Alta">Musculación</div></td>
+                        <td><div class="actividad funcional" data-profe="Martina" data-intensidad="Alta (Cardio)">Funcional</div></td>
+                        <td><div class="actividad musculacion" data-profe="Lucas" data-intensidad="Media/Alta">Musculación</div></td>
+                        <td><div class="actividad libre" data-profe="Staff" data-intensidad="A tu ritmo">Libre</div></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="col-hora">10:00 - 11:00</td>
+                        <td><div class="actividad cross" data-profe="Diego" data-intensidad="Extrema (Fuerza)">Mostacho Cross</div></td>
+                        <td><div class="actividad musculacion" data-profe="Lucas" data-intensidad="Media/Alta">Musculación</div></td>
+                        <td><div class="actividad cross" data-profe="Diego" data-intensidad="Extrema (Fuerza)">Mostacho Cross</div></td>
+                        <td><div class="actividad musculacion" data-profe="Lucas" data-intensidad="Media/Alta">Musculación</div></td>
+                        <td><div class="actividad cross" data-profe="Diego" data-intensidad="Extrema (Fuerza)">Mostacho Cross</div></td>
+                        <td><div class="actividad libre" data-profe="Staff" data-intensidad="A tu ritmo">Libre</div></td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-hora">13:00 - 16:00</td>
+                        <td colspan="6" style="text-align: center; color: var(--text-muted); font-style: italic; background-color: var(--bg-main);">
+                            Horario Reducido / Mantenimiento
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-hora">20:00 - 21:00</td>
+                        <td><div class="actividad funcional" data-profe="Martina" data-intensidad="Alta (Cardio)">Funcional</div></td>
+                        <td><div class="actividad cross" data-profe="Diego" data-intensidad="Extrema (Fuerza)">Mostacho Cross</div></td>
+                        <td><div class="actividad funcional" data-profe="Martina" data-intensidad="Alta (Cardio)">Funcional</div></td>
+                        <td><div class="actividad cross" data-profe="Diego" data-intensidad="Extrema (Fuerza)">Mostacho Cross</div></td>
+                        <td><div class="actividad funcional" data-profe="Martina" data-intensidad="Alta (Cardio)">Funcional</div></td>
+                        <td style="background-color: var(--bg-main);"></td>
+                    </tr>
+                </tbody>
+
+                <!-- BODY: SEDE PANAMÁ -->
+                <tbody id="tbody-panama" style="display: none;">
+                    <tr>
+                        <td class="col-hora">09:00 - 10:00</td>
+                        <td><div class="actividad musculacion" data-profe="Seba" data-intensidad="Media">Musculación</div></td>
+                        <td><div class="actividad musculacion" data-profe="Seba" data-intensidad="Media">Musculación</div></td>
+                        <td><div class="actividad libre" data-profe="Seba" data-intensidad="Libre">Libre</div></td>
+                        <td><div class="actividad musculacion" data-profe="Seba" data-intensidad="Media">Musculación</div></td>
+                        <td><div class="actividad musculacion" data-profe="Seba" data-intensidad="Media">Musculación</div></td>
+                        <td style="background-color: var(--bg-main);"></td>
+                    </tr>
+                    <tr>
+                        <td class="col-hora">18:00 - 19:30</td>
+                        <td><div class="actividad funcional" data-profe="Julieta" data-intensidad="Alta (HIIT)">Mostacho Running</div></td>
+                        <td style="background-color: var(--bg-main);"></td>
+                        <td><div class="actividad funcional" data-profe="Julieta" data-intensidad="Alta (HIIT)">Mostacho Running</div></td>
+                        <td style="background-color: var(--bg-main);"></td>
+                        <td><div class="actividad funcional" data-profe="Julieta" data-intensidad="Alta (HIIT)">Mostacho Running</div></td>
+                        <td><div class="actividad libre" data-profe="Staff" data-intensidad="Salida Grupal">Running Libre</div></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="leyenda-horarios">
+            <div class="leyenda-item"><span class="color-box musculacion"></span> Musculación</div>
+            <div class="leyenda-item"><span class="color-box funcional"></span> Funcional/Running</div>
+            <div class="leyenda-item"><span class="color-box cross"></span> Cross-Training</div>
+            <div class="leyenda-item"><span class="color-box libre"></span> Libre</div>
+        </div>
+    </main>
+
+    <!-- MODAL DE INFORMACIÓN DE CLASE -->
+    <div id="modal-clase" class="modal-overlay">
+        <div class="modal-content card-industrial" style="text-align: center;">
+            <span class="cerrar-modal" id="btn-cerrar-clase">&times;</span>
+            <h2 id="clase-titulo" style="color: var(--accent-logo); font-size: 2.5rem; margin-bottom: 15px;">Clase</h2>
+            <p style="color: var(--accent-mustard); font-family: var(--font-title); font-size: 1.5rem; margin-bottom: 20px;">
+                Profesor: <span id="clase-profe"></span>
+            </p>
+            <div style="background-color: var(--bg-main); padding: 15px; border: 1px dashed var(--accent-logo);">
+                <strong style="color: var(--text-main); font-family: var(--font-title); font-size: 1.2rem;">Nivel de Intensidad:</strong><br> 
+                <span id="clase-intensidad" style="color: var(--text-muted); font-size: 1.1rem; font-style: italic;"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MÓDULO FLOTANTE: WHATSAPP CORREGIDO -->
+    <a href="https://wa.me/542942337776" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp" style="position: fixed; bottom: 20px; right: 20px; background-color: #25D366; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.4); z-index: 1000; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        <svg viewBox="0 0 32 32" width="32" height="32">
+            <path fill="#FFF" d="M16.002 2.058c-7.702 0-13.948 6.242-13.948 13.942 0 2.458.641 4.855 1.862 6.974L2 30l7.211-1.892c2.052 1.127 4.356 1.721 6.787 1.721 7.7 0 13.945-6.244 13.945-13.942.001-7.7-6.245-13.944-13.945-13.944zM16.002 27.525c-2.078 0-4.116-.558-5.901-1.616l-.423-.25-4.384 1.15.1.411 1.178-4.275-.275-.436a11.583 11.583 0 0 1-1.782-6.17c0-6.398 5.207-11.603 11.606-11.603 6.398 0 11.604 5.205 11.604 11.603 0 6.398-5.205 11.604-11.604 11.604zm6.368-8.71c-.35-.175-2.067-1.02-2.387-1.137-.32-.117-.553-.175-.787.175-.233.35-.903 1.137-1.107 1.37-.203.233-.408.263-.758.087-2.193-1.096-3.72-2.327-5.116-4.708-.203-.35.203-.321.888-1.691.117-.233.058-.437-.029-.612-.087-.175-.787-1.897-1.078-2.597-.282-.68-.57-.587-.787-.597-.203-.01-.437-.01-.67-.01-.233 0-.612.087-.932.437-.32.35-1.224 1.196-1.224 2.917 0 1.721 1.253 3.383 1.428 3.617.175.233 2.478 3.782 5.998 5.303 2.146.928 2.951 1.002 4.023.847 1.229-.177 2.067-.845 2.358-1.663.291-.817.291-1.516.203-1.663-.086-.146-.32-.233-.67-.408z"></path>
+        </svg>
+    </a>
+
+    <!-- FOOTER CORREGIDO -->
+    <footer>
+        <div class="footer-content">
+            <img src="./public/imagen/logo.png" alt="Mostacho Bahía Blanca" class="footer-logo">
+            
+            <div class="footer-social">
+                <a href="https://www.instagram.com/mostachogym/" target="_blank" rel="noopener noreferrer" class="social-link" title="Síguenos en Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-instagram">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                    <span>@MostachoBahia</span>
+                </a>
+            </div>
+        </div>
+        <p>&copy; 2026 Mostacho Bahía Blanca. Forjando Carácter.</p>
+    </footer>
+
+    <script src="./src/js/core/app.js"></script>
+</body>
+</html>

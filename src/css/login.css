@@ -1,0 +1,118 @@
+/* =========================================
+   ESTILOS ESPECÍFICOS DE LA PANTALLA DE LOGIN
+   ========================================= */
+
+.login-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-main);
+    /* Patrón de fibra de carbono/industrial para el fondo del login */
+    background-image: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+    position: relative;
+}
+
+.btn-back {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    color: var(--text-muted);
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    border: 1px solid var(--border-subtle);
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    color: var(--accent-mustard);
+    border-color: var(--accent-mustard);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+    padding: 20px;
+}
+
+.login-card {
+    padding: 50px 40px;
+    border: var(--border-logo);
+    box-shadow: var(--shadow-dark);
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 1px dashed var(--border-subtle);
+    padding-bottom: 20px;
+}
+
+.login-logo {
+    width: 90px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 10px rgba(216, 27, 96, 0.5));
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: var(--text-main);
+    font-family: var(--font-title);
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+
+.form-group input {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-main);
+    font-family: var(--font-text);
+    padding: 15px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--accent-logo);
+    box-shadow: 0 0 8px rgba(216, 27, 96, 0.3);
+}
+
+.form-group input::placeholder {
+    color: #444;
+}
+
+.login-btn {
+    margin-top: 15px;
+    font-size: 1.5rem;
+    padding: 15px;
+}
+
+.error-message {
+    background-color: rgba(216, 27, 96, 0.15);
+    border: 1px solid var(--accent-logo);
+    color: var(--accent-logo);
+    padding: 12px;
+    text-align: center;
+    font-family: var(--font-text);
+    font-size: 0.9rem;
+}
+
+.oculto {
+    display: none;
+}
