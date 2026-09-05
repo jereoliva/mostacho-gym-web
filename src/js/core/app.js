@@ -117,4 +117,17 @@ document.addEventListener('DOMContentLoaded', () => {
         modalClase.addEventListener('click', (e) => { if (e.target === modalClase) modalClase.classList.remove('activo'); });
     }
 
+    // --- FORMULARIO DE CONTACTO (envía por WhatsApp) ---
+    const formContacto = document.getElementById('form-contacto');
+    if (formContacto) {
+        formContacto.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById('contacto-nombre').value;
+            const telefono = document.getElementById('contacto-telefono').value;
+            const mensaje = document.getElementById('contacto-mensaje').value;
+            const texto = `Hola Mostacho Gym! Soy ${nombre} (tel: ${telefono}). ${mensaje}`;
+            window.open(`https://wa.me/542942337776?text=${encodeURIComponent(texto)}`, '_blank');
+        });
+    }
+
 });
