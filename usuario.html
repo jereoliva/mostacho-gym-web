@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil | Mostacho Gym</title>
+    
+    <!-- Tipografías Industriales -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Hojas de Estilo del Sistema -->
+    <link rel="stylesheet" href="./src/css/variables.css">
+    <link rel="stylesheet" href="./src/css/global.css">
+    <link rel="stylesheet" href="./src/css/admin.css">
+    
+    <style>
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .search-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .search-input {
+            flex-grow: 1;
+            padding: 14px;
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-main);
+            font-family: var(--font-text);
+            font-size: 1rem;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-logo);
+        }
+    </style>
+</head>
+<body class="admin-layout">
+
+    <!-- MENÚ LATERAL (SIDEBAR SOCIO) -->
+    <aside class="admin-sidebar">
+        <div class="sidebar-header">
+            <img src="./public/imagen/logo.png" alt="Mostacho Logo" class="admin-logo">
+            <h2>MI CUARTEL</h2>
+        </div>
+        <nav class="sidebar-nav" id="usuario-nav">
+            <a href="#estado" class="nav-tab active">💳 Mi Membresía</a>
+            <a href="#rutinas" class="nav-tab">🏋️ Explorar Rutinas</a>
+        </nav>
+        <div class="sidebar-footer">
+            <button onclick="cerrarSesion()" class="btn-outline-full" style="font-size: 1rem; padding: 10px; width: 100%;">Cerrar Sesión</button>
+        </div>
+    </aside>
+
+    <!-- ÁREA DE CONTENIDO PRINCIPAL -->
+    <main class="admin-main">
+        
+        <!-- TOPBAR -->
+        <header class="admin-topbar">
+            <div>
+                <h1 id="view-title" style="margin:0; font-size: 2.5rem; color: var(--text-main);">Mi Membresía</h1>
+                <p style="color: var(--text-muted); margin:0;">Bienvenido de nuevo, Atleta.</p>
+            </div>
+            <div class="admin-profile">
+                <span style="color: var(--accent-logo); font-family: var(--font-title); font-size: 1.2rem;">SOCIO ACTIVO</span>
+            </div>
+        </header>
+
+        <section class="admin-content">
+            
+            <!-- VISTA 1: ESTADO DE PLAN, ASISTENCIA Y ADHERENCIA -->
+            <div id="view-estado" class="tab-content active">
+                
+                <!-- CARDS DE ESTADO DE MEMBRESÍA -->
+                <div class="kpi-grid" style="margin-bottom: 30px;">
+                    <div class="kpi-card" style="border-top-color: var(--accent-mustard);">
+                        <h3 class="kpi-title">Días Restantes</h3>
+                        <div class="kpi-value" style="color: var(--accent-mustard);">18 Días</div>
+                        <div class="kpi-trend positiva">Vence el 30/09/2026</div>
+                    </div>
+                    <div class="kpi-card" style="border-top-color: var(--accent-logo);">
+                        <h3 class="kpi-title">Plan Actual</h3>
+                        <div class="kpi-value" style="font-size: 2.2rem;">PASE INTEGRAL</div>
+                        <div class="kpi-trend">Acceso a Yrigoyen y Panamá</div>
+                    </div>
+                    <div class="kpi-card">
+                        <h3 class="kpi-title">Estado de Cuenta</h3>
+                        <div class="kpi-value" style="color: #25D366;">AL DÍA</div>
+                        <div class="kpi-trend">Último pago: $35.000</div>
+                    </div>
+                </div>
+
+                <!-- SECCIÓN NUEVA: CONTROL DE ASISTENCIA Y ADHERENCIA A LA RUTINA -->
+                <div class="admin-table-container" style="margin-bottom: 40px; border-left: 4px solid var(--accent-logo);">
+                    <h2 style="margin-bottom: 20px; font-size: 2rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px; color: var(--text-main);">
+                        📊 Asistencia Semanal y Adherencia
+                    </h2>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; align-items: center;">
+                        
+                        <!-- Métrica de Días Asistidos -->
+                        <div style="background-color: var(--bg-main); padding: 20px; border: 1px solid var(--border-subtle);">
+                            <span style="color: var(--text-muted); font-size: 0.95rem;">Rutina Activa:</span>
+                            <h4 style="color: var(--accent-mustard); font-size: 1.4rem; margin-bottom: 10px;">Torso / Pierna (4 Días / sem)</h4>
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 15px;">
+                                <span style="font-family: var(--font-title); font-size: 3rem; color: var(--text-main);" id="cant-asistencias">3</span>
+                                <span style="color: var(--text-muted); font-size: 1.2rem;">de <strong style="color: white;" id="cant-objetivo">4</strong> días completados</span>
+                            </div>
+                        </div>
+
+                        <!-- Barra de Progreso y Porcentaje -->
+                        <div style="background-color: var(--bg-main); padding: 20px; border: 1px solid var(--border-subtle);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                <span style="color: var(--text-main); font-family: var(--font-title); font-size: 1.2rem;">Cumplimiento Semanal</span>
+                                <span style="color: var(--accent-logo); font-family: var(--font-title); font-size: 1.5rem;" id="porcentaje-adherencia">75%</span>
+                            </div>
+                            
+                            <!-- Contenedor Barra de Progreso -->
+                            <div style="width: 100%; background-color: #222; height: 18px; border-radius: 9px; overflow: hidden; border: 1px solid #444;">
+                                <div id="barra-adherencia" style="width: 75%; height: 100%; background: linear-gradient(90deg, var(--accent-mustard), var(--accent-logo)); transition: width 0.5s ease;"></div>
+                            </div>
+                            
+                            <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 12px; font-style: italic;">
+                                🔥 ¡Excelente ritmo! Te falta solo 1 día para cumplir el 100% de la rutina semanal.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- HISTORIAL RECIENTE -->
+                <div class="admin-table-container">
+                    <h2 style="margin-bottom: 20px; font-size: 2rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px; color: var(--text-main);">
+                        📌 Mis Últimos Check-ins
+                    </h2>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha y Hora</th>
+                                <th>Sucursal</th>
+                                <th>Actividad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ayer, 18:30 h</td>
+                                <td><span class="badge badge-ok">Sede Yrigoyen (Central)</span></td>
+                                <td>Musculación</td>
+                            </tr>
+                            <tr>
+                                <td>Hace 3 días, 19:00 h</td>
+                                <td><span class="badge badge-warning">Sede Panamá</span></td>
+                                <td>Mostacho Running</td>
+                            </tr>
+                            <tr>
+                                <td>Hace 5 días, 09:15 h</td>
+                                <td><span class="badge badge-ok">Sede Yrigoyen (Central)</span></td>
+                                <td>Musculación</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- VISTA 2: BUSCADOR DE RUTINAS POR PROFESOR O CATEGORÍA -->
+            <div id="view-rutinas" class="tab-content">
+                <div class="admin-table-container">
+                    <h2 style="margin-bottom: 20px; font-size: 2rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px; color: var(--text-main);">
+                        🔍 Catálogo de Rutinas
+                    </h2>
+
+                    <!-- BARRA DE BÚSQUEDA -->
+                    <div class="search-container">
+                        <input type="text" id="input-busqueda" class="search-input" placeholder="Buscar por profesor (ej: Diego, Lucas) o tipo de rutina (ej: Hipertrofia, Fuerza)...">
+                    </div>
+
+                    <!-- GRILLA DE TARJETAS DE RUTINAS -->
+                    <div class="grid-filosofia" id="contenedor-rutinas">
+                        
+                        <!-- Rutina 1 -->
+                        <article class="card-industrial rutina-card" data-profesor="Diego" data-tipo="Fuerza Máxima">
+                            <span class="badge badge-ok" style="margin-bottom: 10px; display: inline-block;">Fuerza Máxima</span>
+                            <h3 style="color: var(--accent-logo); margin-bottom: 5px;">Powerlifting A/B</h3>
+                            <p style="color: var(--accent-mustard); font-family: var(--font-title); font-size: 1.1rem; margin-bottom: 15px;">
+                                Prof. Diego
+                            </p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
+                                Enfocada en los tres básicos (Sentadilla, Banca, Peso Muerto). Ideal para ganancia de fuerza bruta.
+                            </p>
+                            <button class="btn-outline-full">Ver Rutina Completa</button>
+                        </article>
+
+                        <!-- Rutina 2 -->
+                        <article class="card-industrial rutina-card" data-profesor="Lucas" data-tipo="Hipertrofia">
+                            <span class="badge badge-warning" style="margin-bottom: 10px; display: inline-block;">Hipertrofia</span>
+                            <h3 style="color: var(--accent-logo); margin-bottom: 5px;">Torso / Pierna 4 Días</h3>
+                            <p style="color: var(--accent-mustard); font-family: var(--font-title); font-size: 1.1rem; margin-bottom: 15px;">
+                                Prof. Lucas
+                            </p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
+                                Frecuencia 2 para desarrollo muscular óptimo y volumen de trabajo moderado/alto.
+                            </p>
+                            <button class="btn-outline-full">Ver Rutina Completa</button>
+                        </article>
+
+                        <!-- Rutina 3 -->
+                        <article class="card-industrial rutina-card" data-profesor="Martina" data-tipo="Adaptación">
+                            <span class="badge badge-ok" style="margin-bottom: 10px; display: inline-block;">Adaptación</span>
+                            <h3 style="color: var(--accent-logo); margin-bottom: 5px;">Fullbody Principiantes</h3>
+                            <p style="color: var(--accent-mustard); font-family: var(--font-title); font-size: 1.1rem; margin-bottom: 15px;">
+                                Prof. Martina
+                            </p>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
+                                Acondicionamiento neuromuscular general de 3 días a la semana para recién iniciados.
+                            </p>
+                            <button class="btn-outline-full">Ver Rutina Completa</button>
+                        </article>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        
+    </main>
+
+    <!-- SCRIPT DE NAVEGACIÓN Y BÚSQUEDA INTERACTIVA -->
+    <script src="./src/js/core/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navegación por Pestañas (SPA)
+            const navLinks = document.querySelectorAll('#usuario-nav .nav-tab');
+            const viewTitle = document.getElementById('view-title');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                    
+                    document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+                    
+                    const targetId = link.getAttribute('href').replace('#', 'view-');
+                    const targetView = document.getElementById(targetId);
+                    if (targetView) targetView.classList.add('active');
+                    
+                    viewTitle.textContent = link.textContent.trim().replace(/^[\u{1F300}-\u{1F9FF}]\s*/u, '');
+                });
+            });
+
+            // Buscador en Tiempo Real de Rutinas por Profesor o Categoría
+            const inputBusqueda = document.getElementById('input-busqueda');
+            const tarjetasRutinas = document.querySelectorAll('.rutina-card');
+
+            if (inputBusqueda) {
+                inputBusqueda.addEventListener('input', (e) => {
+                    const busqueda = e.target.value.toLowerCase().trim();
+                    
+                    tarjetasRutinas.forEach(card => {
+                        const profesor = card.getAttribute('data-profesor').toLowerCase();
+                        const tipo = card.getAttribute('data-tipo').toLowerCase();
+                        const titulo = card.querySelector('h3').textContent.toLowerCase();
+
+                        if (profesor.includes(busqueda) || tipo.includes(busqueda) || titulo.includes(busqueda)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
